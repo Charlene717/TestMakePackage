@@ -5,17 +5,23 @@ install.packages(packages_to_use)
 lapply(packages_to_use, library, character.only = TRUE)
 
 ##
-setwd("~") # 我們想將套件放在 /~ 的路徑下
-create("TestMakePackage") # 我們的套件名稱叫做 TestMakePackage
+# setwd("~") # 我們想將套件放在 /~ 的路徑下
+# create("TestMakePackage")
 
+# create(here::here("TestMakePackage")) # 我們的套件名稱叫做 TestMakePackage
+
+#create(paste0(getwd(),"/TestMakePackage"))
+create(getwd())
 
 ##
-setwd("./TestMakePackage") # 切換至套件資料夾下
+#setwd("./TestMakePackage") # 切換至套件資料夾下
 dir() # 可以看到有三個檔案，一個資料夾
 
 
 ##
-setwd("~/TestMakePackage/R") # 切換至 ~/TestMakePackage/R 資料夾下
+#setwd(paste0(getwd(),"/R")) # 切換至 ~/TestMakePackage/R 資料夾下
+setwd("./R") # 切換至 ~/TestMakePackage/R 資料夾下
+
 file.create("median_function.R") # 建立一個檔案
 
 ############
@@ -39,22 +45,32 @@ file.create("median_function.R") # 建立一個檔案
 ############
 
 ##
-setwd("~/TestMakePackage")
+# setwd("~/TestMakePackage")
+# roxygenize()
+
+setwd("../")
+getwd()
 roxygenize()
 
 ##
-setwd("~/TestMakePackage/man")
+# setwd("~/TestMakePackage/man")
+setwd("./man")
 dir()
 
 
 ##
-setwd("~")
-## install("TestMakePackage") # 這裡我們不使用 install.packages 因為我們的套件並沒有發佈到 CRAN
+# setwd("~")
+# ## install("TestMakePackage") # 這裡我們不使用 install.packages 因為我們的套件並沒有發佈到 CRAN
+# library(TestMakePackage)
+#
+# ?median_function # 你可以在本機呼叫出剛才編寫的說明文件
+# median_function(seq(1:10))
+
+setwd("../")
+getwd()
 library(TestMakePackage)
 ?median_function # 你可以在本機呼叫出剛才編寫的說明文件
 median_function(seq(1:10))
-
-
 
 #########
 library("devtools")
