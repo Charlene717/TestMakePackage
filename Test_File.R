@@ -72,8 +72,20 @@ library(TestMakePackage)
 ?median_function # 你可以在本機呼叫出剛才編寫的說明文件
 median_function(seq(1:10))
 
-#########
+##### Final Test #####
+# Install the package
 library("devtools")
-install_github("Charlene717/Test_Make_Package")
+install_github("Charlene717/TestMakePackage")
 
+# Loading the package
 library("TestMakePackage")
+
+# Test function 1
+median_function(seq(1:10))
+
+# Test function 2
+library(ggplot2)
+Plot1 <- ggplot(data = mpg) +
+         geom_point(mapping = aes(x = displ, y = hwy))
+
+BeautifyggPlot(Plot1)
